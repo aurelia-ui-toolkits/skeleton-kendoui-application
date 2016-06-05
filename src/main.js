@@ -1,4 +1,5 @@
 import 'bootstrap';
+import {ThemeManager} from './theme-manager';
 
 export function configure(aurelia) {
   aurelia.use
@@ -14,5 +15,14 @@ export function configure(aurelia) {
         .setDefaultEndpoint('github');
     });
 
-  aurelia.start().then(() => aurelia.setRoot());
+  aurelia.start()
+    .then(au => {
+      // before we tell Aurelia to launch, get the ThemeManager
+      let manager = au.container.get(ThemeManager);
+
+      // let the ThemeManager load the 'default' theme
+      return manager.loadTheme('default')
+             .then(() => au);
+    })
+    .then(au => au.setRoot('app'));
 }

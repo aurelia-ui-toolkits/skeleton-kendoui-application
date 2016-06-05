@@ -1,9 +1,8 @@
 <template>
-  <require from="nav-bar.html"></require>
+  <require from="./nav-bar"></require>
   <require from="bootstrap/css/bootstrap.css"></require>
 
-  <require from="kendo-ui/styles/kendo.common.min.css!"></require>
-  <require from="kendo-ui/styles/kendo.bootstrap.min.css!"></require>
+  <!-- Note, Kendo's CSS isn't loaded here, this is done in main.js before Aurelia starts -->
 
   <nav-bar router.bind="router"></nav-bar>
 
